@@ -1,0 +1,12 @@
+const Router = require('koa-router')
+const controller = require('./controller')
+const jwt = require('../../middleware/jwt')
+
+const router = new Router()
+router.post('/admin/users', controller.register)
+router.put('/admin/users/:id', jwt, controller.update)
+router.post('/admin/login', controller.login)
+router.post('/admin/forgot_password', controller.forgot_password)
+router.post('/admin/reset_password', controller.reset_password)
+router.post('/admin/upload', controller.upload)
+module.exports = router.routes()
